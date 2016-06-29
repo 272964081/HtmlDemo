@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>taobao demo</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		a{
+			color: #F40;
+		}
+		.box{
+			width: 655px;
+			height: 65px;
+			margin: 50px auto;
+		}
+		#search-container{
+			float: left;
+			height: 65px;
+			width: 625px;
+		}
+		.s-title{
+			display: block;
+			float: left;
+			height: 25px;
+			width: 50px;
+			text-decoration: none;
+			text-align: center;
+			line-height: 25px;
+			font-size: 12px;
+			font-weight: normal;
+		}
+
+		.s-title:hover{
+			background-color:#FDD;
+		}
+		/*.s-title[name='tm']:hover{
+			background-color: #FDD;
+			color: #C40000;
+		}*/
+		/*通过优先级覆盖已选title的hover为空*/
+		#search-title .s-selected-tb:hover{
+			color: #FFF;
+		}
+		#search-panel{
+			clear: both;
+			height: 36px;
+		}
+
+		.search-tb{
+			border:2px solid #F40;
+		}
+		.search-tm{
+			border:2px solid #C40000;
+		}
+		#myform{
+			float: left;
+			height: 36px;
+			width: auto;
+		}
+
+		.search-icon1{
+			float: left;
+			height: 100%;
+			width: 36px;
+			background-color: #EEE;
+		}
+
+		#search-input-text{
+			float: left;
+			margin-top: 0;
+			height: 36px;
+			width: 439px;
+			border: 0;
+			line-height: 32px;
+			font-size: 18px;
+			outline: none;
+		}
+		.search-icon2{
+			float: left;
+			background-image: url(img/1.png);
+			background-repeat: no-repeat;
+			background-size: 44px 19px;
+			background-position: 3px 4px;
+			position: relative;
+			top: 8px;
+			height: 20px;
+			width: 24px;
+			vertical-align: middle;
+			cursor: pointer;
+		}
+		.search-icon2:hover{
+			background-position: -19px 4px;
+		}
+
+		#search-btn{
+			float: left;
+			height: 100%;
+			width: 122px;
+			border: 0;
+			color: #FFF;
+			background-color: #F40;
+			line-height: 36px;
+			font-size: 20px;
+			font-weight: bold;
+			cursor: pointer;
+			outline: none;
+		}
+		.search-more{
+			display: block;
+			float: left;
+			padding-top: 30px;
+			padding-left: 5px;
+			width: 24px;
+			height: 32px;
+			text-decoration: none;
+			color: #3C3C3C;
+			font-size: 12px;
+		}
+		.search-more:hover{
+			color: #F40;
+		}
+		.s-selected-tb[name="tb"]{
+			background-color: #F40;
+			color: #FFF;
+			font-weight: bold;
+		}
+		.s-selected-tb[name='tm']{
+			background-color: #C40000;
+			color: #FFF;
+			font-weight: bold;
+		}
+
+
+
+	</style>
+	<script type="text/javascript" src="jq/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".s-title").each(function(index, el) {
+				$(this).click(function(){
+					$(".s-title").removeClass('s-selected-tb');
+					$(this).addClass('s-selected-tb');
+					if($(this).attr('name')==='tm'){
+						$("#search-panel").removeClass('search-tb').addClass('search-tm');
+						$("#search-btn").css('background-color','#C40000');
+					}else{
+						$("#search-panel").removeClass('search-tm').addClass('search-tb');
+						$("#search-btn").css('background-color','#F40');
+					}
+					//取消其他两个的底色
+				})
+			});
+		})
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div id="search-container">
+			<div id="search-title">
+				<a href="#" class="s-title s-selected-tb" id="item1" name="tb">宝贝</a>
+				<a href="#" class="s-title " id="item2" name="tm">天猫</a>
+				<a href="#" class="s-title" id="item3" name="tb">店铺</a>
+			</div>
+			<div id="search-panel" class="search-tb">
+				<form action="#" id="myform">
+					<div class="search-icon1"></div>
+					<input type="text" id="search-input-text" autocomplete="off">
+					<div class="search-icon2"></div>
+					<input type="submit" id = "search-btn" value="搜索">
+				</form>
+
+			</div>
+		</div>
+		<a href="#" class="search-more">高级<br/>搜索</a>
+	</div>
+</body>
+</html>
